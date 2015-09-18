@@ -1,0 +1,24 @@
+{
+  "name": "formula-range",
+  "version": "1.0.0",
+  "description": "Represents a spreadsheet table range.",
+  "main": "range.js",
+  "scripts": {
+    "test": "mocha tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FormulaPages/range.git"
+  },
+  "keywords": [
+    "Formula",
+    "JavaScript",
+    "Spreadsheet"
+  ],
+  "author": "Peter Moresi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FormulaPages/range/issues"
+  },
+  "homepage": "https://github.com/FormulaPages/range#readme"
+}
