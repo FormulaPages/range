@@ -1,10 +1,11 @@
 {
   "name": "formula-range",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Represents a spreadsheet table range.",
   "main": "range.js",
   "scripts": {
-    "test": "mocha tests"
+    "test": "mocha tests",
+    "build": "babel RANGE.es6 -m umd --out-file RANGE.js" 
   },
   "repository": {
     "type": "git",
