@@ -1,24 +1,27 @@
 var assert = require('assert');
+var sheet = require('formula-sheet');
+var mySheet = new sheet();
+
 describe('addressSystem', function() {
-  var range = require('./range');
+  var range = require('./RANGE');
 
   it('should be there when you require it', function () {
     assert( typeof range !== undefined, 'not there for me');
   });
 
   it('should remember the topLeft and bottomRight', function() {
-    var r = new range(0, 10);
+    var r = new range(mySheet, 0, 10);
     assert( r.topLeft === 0 );
     assert( r.bottomRight === 10 );
   });
 
   it('should allow an optional name', function() {
-    var r = new range(0, 10, 'my-range');
+    var r = new range(mySheet, 0, 10, 'my-range');
     assert(r.name === 'my-range' );
   });
   
   it('should be able to determine hits', function() {
-    var r = new range(0, 10);
+    var r = new range(mySheet, 0, 10);
     assert( r.hit(1) );
     assert( r.hit(10) );
     assert( r.hit(5) );
@@ -27,7 +30,7 @@ describe('addressSystem', function() {
   });
 
   it('should return list of indexes', function() {
-    var r = new range(0, 9);
+    var r = new range(mySheet, 0, 9);
     assert( r.cells().length === 10 );
     assert( r.cells()[0] === 0 );
     assert( r.cells()[1] === 1 );

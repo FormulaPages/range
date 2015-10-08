@@ -28,11 +28,16 @@
     /* The constructor captures top left and bottom right cell indexes.
      */
 
-    function RANGE(topLeftCellIndex, bottomRightCellIndex) {
-      var name = arguments.length <= 2 || arguments[2] === undefined ? '' : arguments[2];
+    function RANGE(sheet, topLeftCellIndex, bottomRightCellIndex) {
+      var name = arguments.length <= 3 || arguments[3] === undefined ? '' : arguments[3];
 
       _classCallCheck(this, RANGE);
 
+      if (sheet.constructor.name !== 'SHEET') {
+        throw Error('sheet must be from SHEET constructor');
+      }
+
+      this.sheet = sheet;
       this.topLeft = topLeftCellIndex;
       this.bottomRight = bottomRightCellIndex;
       this.name = name;

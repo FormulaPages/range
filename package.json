@@ -1,11 +1,11 @@
 {
   "name": "formula-range",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Represents a spreadsheet table range.",
-  "main": "range.js",
+  "main": "RANGE.js",
   "scripts": {
     "test": "mocha tests",
-    "build": "babel RANGE.es6 -m umd --out-file RANGE.js" 
+    "build": "babel RANGE.es6 -m umd --out-file RANGE.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/FormulaPages/range/issues"
   },
-  "homepage": "https://github.com/FormulaPages/range#readme"
+  "homepage": "https://github.com/FormulaPages/range#readme",
+  "devDependencies": {
+    "formula-sheet": "^0.1.1"
+  }
 }

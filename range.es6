@@ -8,7 +8,12 @@ export default class RANGE {
 
   /* The constructor captures top left and bottom right cell indexes.
    */
-  constructor(topLeftCellIndex, bottomRightCellIndex, name='') {
+  constructor(sheet, topLeftCellIndex, bottomRightCellIndex, name='') {
+    if (sheet.constructor.name !== 'SHEET') {
+      throw Error('sheet must be from SHEET constructor');
+    }
+
+    this.sheet = sheet;
     this.topLeft = topLeftCellIndex;
     this.bottomRight = bottomRightCellIndex;
     this.name = name;
