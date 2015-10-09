@@ -29,7 +29,7 @@ describe('addressSystem', function() {
     assert( !r.hit(11) );
   });
 
-  it('should return list of indexes', function() {
+  it('should produce a list of indexes', function() {
     var r = new range(mySheet, 0, 9);
     assert( r.cells().length === 10 );
     assert( r.cells()[0] === 0 );
@@ -42,7 +42,12 @@ describe('addressSystem', function() {
     assert( r.cells()[7] === 7 );
     assert( r.cells()[8] === 8 );
     assert( r.cells()[9] === 9 );
-    
+  });
+
+  it('should produce a list of rows', function() {
+    var r = new range(mySheet, 0, 9);
+    assert( r.rows().length === 1 );
+    assert( r.rows()[0].length === 10 );
   });
   
 });
