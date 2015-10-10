@@ -4,7 +4,7 @@
   "description": "Represents a spreadsheet table range.",
   "main": "RANGE.js",
   "scripts": {
-    "test": "mocha tests",
+    "test": "mocha -r jscoverage -R spec tests",
     "build": "babel RANGE.es6 -m umd --out-file RANGE.js"
   },
   "repository": {
@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/FormulaPages/range#readme",
   "devDependencies": {
-    "formula-sheet": "^0.1.2"
+    "formula-sheet": "^0.1.2",
+    "jscoverage": "^0.6.0"
   },
   "dependencies": {
     "formula-cellindex": "^1.0.0",
