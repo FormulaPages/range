@@ -8,9 +8,9 @@
       exports: {}
     };
     factory(mod.exports, mod, global.CELLINDEX, global.INDEX2COL, global.INDEX2ROW);
-    global.RANGE = mod.exports;
+    global.unknown = mod.exports;
   }
-})(this, function (exports, module, _formulaCellindex, _formulaIndex2col, _formulaIndex2row) {
+})(this, function (exports, module, _CELLINDEX, _INDEX2COL, _INDEX2ROW) {
   /*
    * A range represents a fragment of a worksheet.
    * It is defined as two points in a flat worksheet array.
@@ -26,27 +26,22 @@
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-  var _CELLINDEX = _interopRequireDefault(_formulaCellindex);
+  var _CELLINDEX2 = _interopRequireDefault(_CELLINDEX);
 
-  var _INDEX2COL = _interopRequireDefault(_formulaIndex2col);
+  var _INDEX2COL2 = _interopRequireDefault(_INDEX2COL);
 
-  var _INDEX2ROW = _interopRequireDefault(_formulaIndex2row);
+  var _INDEX2ROW2 = _interopRequireDefault(_INDEX2ROW);
 
   var RANGE = (function () {
 
     /* The constructor captures top left and bottom right cell indexes.
      */
 
-    function RANGE(sheet, topLeft, bottomRight) {
-      var name = arguments.length <= 3 || arguments[3] === undefined ? '' : arguments[3];
+    function RANGE(topLeft, bottomRight) {
+      var name = arguments.length <= 2 || arguments[2] === undefined ? '' : arguments[2];
 
       _classCallCheck(this, RANGE);
 
-      if (sheet.constructor.name !== 'SHEET') {
-        throw Error('sheet must be from SHEET constructor');
-      }
-
-      this.sheet = sheet;
       this.topLeft = topLeft;
       this.bottomRight = bottomRight;
       this.name = name;
@@ -63,17 +58,12 @@
         return this.topLeft <= cellIndex && cellIndex <= this.bottomRight;
       }
     }, {
-      key: 'cells',
+      key: 'topLeftCell',
 
-      /* Return a list of cells
+      /* Return the top left cell
        */
-      value: function cells() {
-        var start = typeof this.topLeft === 'function' ? this.topLeft() : this.topLeft,
-            end = typeof this.bottomRight === 'function' ? this.bottomRight() : this.bottomRight;
-
-        return Array.apply(start, Array(end + 1)).map(function (x, y) {
-          return y;
-        });
+      value: function topLeftCell() {
+        return;
       }
     }, {
       key: 'topColumn',
@@ -81,7 +71,7 @@
       /* Return the first column
        */
       value: function topColumn() {
-        return (0, _INDEX2COL['default'])(this.topLeft);
+        return (0, _INDEX2COL2['default'])(this.topLeft);
       }
     }, {
       key: 'topRow',
@@ -89,7 +79,7 @@
       /* Return the first row
        */
       value: function topRow() {
-        return (0, _INDEX2ROW['default'])(this.topLeft);
+        return (0, _INDEX2ROW2['default'])(this.topLeft);
       }
     }, {
       key: 'bottomColumn',
@@ -97,7 +87,7 @@
       /* Return the bottom column
        */
       value: function bottomColumn() {
-        return (0, _INDEX2COL['default'])(this.bottomRight);
+        return (0, _INDEX2COL2['default'])(this.bottomRight);
       }
     }, {
       key: 'bottomRow',
@@ -105,7 +95,31 @@
       /* Return the bottom row_num
        */
       value: function bottomRow() {
-        return (0, _INDEX2ROW['default'])(this.bottomRight);
+        return (0, _INDEX2ROW2['default'])(this.bottomRight);
+      }
+    }, {
+      key: 'data',
+
+      /* Returns an array with the data
+       */
+      value: function data() {
+        return this.cells().map(function (n) {
+          return n ? n.valueOf() : undefined;
+        });
+      }
+    }, {
+      key: 'cells',
+
+      /* Return a list of cells
+       */
+      value: function cells() {
+        var start = typeof this.topLeft === 'function' ? this.topLeft() : this.topLeft,
+            end = typeof this.bottomRight === 'function' ? this.bottomRight() : this.bottomRight,
+            that = this;
+
+        return Array.apply(start, Array(end + 1)).map(function (x, y) {
+          return y;
+        });
       }
     }, {
       key: 'rows',
@@ -116,7 +130,7 @@
         var self = this;
         return Array.apply(this.topRow(), Array(this.bottomRow() + 1)).map(function (x, row) {
           return Array.apply(self.topColumn(), Array(self.bottomColumn() + 1)).map(function (x, col) {
-            return self.sheet.data[(0, _CELLINDEX['default'])(row, col)];
+            return [(0, _CELLINDEX2['default'])(col, row)];
           });
         });
       }
@@ -134,3 +148,4 @@
 
   module.exports = RANGE;
 });
+

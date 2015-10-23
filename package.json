@@ -1,6 +1,6 @@
 {
   "name": "formula-range",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "Represents a spreadsheet table range.",
   "main": "RANGE.js",
   "scripts": {
@@ -23,7 +23,6 @@
   },
   "homepage": "https://github.com/FormulaPages/range#readme",
   "devDependencies": {
-    "formula-sheet": "^0.1.2",
     "jscoverage": "^0.6.0"
   },
   "dependencies": {
